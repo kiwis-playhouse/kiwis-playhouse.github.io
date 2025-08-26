@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kiwi’s Candy by the Pound — premium artisanal candies, chocolates, and confections in Kemptville, Ontario. Family-owned, proudly Canadian, sweets by the pound.">
+    <meta name="keywords" content="Kiwi’s Candy by the Pound, Kemptville candy store, chocolates, confections, artisanal sweets, Canadian candy shop, premium treats">
+    <meta name="author" content="Kiwi’s Candy by the Pound">
+    <title>Kiwi’s Candy by the Pound | Premium Artisanal Confections in Kemptville, ON</title>
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Google Fonts (unchanged) -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Accessible, high-contrast palette (AAA for small text where used) */
+        :root {
+            --primary-color: #0B5E3C;      /* Deep kiwi green; white text ≥ 7.0:1 */
+            --secondary-color: #0A3D62;    /* Deep blue; white text ≥ 7.0:1 */
+            --accent-color: #B8860B;       /* Warm gold accent (non-text backgrounds/accents) */
+            --success-color: #146C43;      /* Darker green for contrast */
+            --danger-color: #B10024;       /* Dark red for contrast */
+            --warning-color: #8A6D00;      /* Dark amber for contrast */
+            --info-color: #0C5460;         /* Teal-blue info */
+            --dark-color: #0B1321;         /* Very dark navy for footer */
+            --light-color: #F8FAFC;        /* Near-white */
+            --candy-gradient: linear-gradient(135deg, #0B5E3C, #0A3D62); /* Dark gradient for white text */
+            --text-color: #1F2937;         /* Slate-800 on white (≥ 14:1) */
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #ffffff;
+        }
+
+        /* Header and Navigation */
+        .navbar-brand {
+            font-family: 'Fredoka One', cursive;
+            font-size: 2rem;
+            color: var(--primary-color) !important;
+            letter-spacing: .3px;
+        }
+
+        .navbar {
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+            background: #fff;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            transition: all 0.2s ease;
+            color: var(--text-color) !important;
+        }
+
+        .nav-link:hover,
+        .nav-link:focus {
+            color: var(--primary-color) !important;
+            transform: translateY(-2px);
+        }
+
+        /* Better focus visibility */
+        a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+            outline: 3px solid #FFD166;
+            outline-offset: 2px;
+            border-radius: 6px;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: var(--candy-gradient);
+            color: white;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="white" opacity="0.08"><path d="M0,0 Q250,50 500,0 T1000,0 L1000,100 L0,100 Z"/></svg>') repeat-x;
+            background-size: 1000px 100px;
+            animation: wave 10s linear infinite;
+        }
+
+        @keyframes wave { 0% { transform: translateX(0);} 100% { transform: translateX(-1000px);} }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        .hero-content { position: relative; z-index: 2; }
+
+        .hero-title {
+            font-family: 'Fredoka One', cursive;
+            font-size: 3.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.25);
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-50px);} to { opacity: 1; transform: translateY(0);} }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(50px);} to { opacity: 1; transform: translateY(0);} }
+
+        /* Buttons (override Bootstrap to meet contrast) */
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        .btn-primary:hover, .btn-primary:focus {
+            background-color: #094D32;
+            border-color: #094D32;
+        }
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        .btn-outline-primary:hover, .btn-outline-primary:focus {
+            background-color: var(--primary-color);
+            color: #fff;
+            border-color: var(--primary-color);
+        }
+
+        /* Business Information Section */
+        .business-info {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #F8FAFC, #EEF2F7);
+        }
+
+        .info-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            height: 100%;
+            border-top: 4px solid var(--primary-color);
+        }
+
+        .info-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+        }
+
+        .info-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Products Section */
+        .products-section { padding: 80px 0; }
+
+        .section-title {
+            font-family: 'Fredoka One', cursive;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: var(--candy-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            height: 100%;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+        }
+
+        .product-emoji {
+            font-size: 4rem;
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #F4F8F6, #EDF5FF);
+        }
+
+        .product-body { padding: 1.5rem; }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        /* Add currency symbol via CSS (no HTML/JS changes) */
+        .product-price::before { content: "$"; margin-right: 2px; }
+
+        .btn-add-cart {
+            background: var(--candy-gradient);
+            border: none;
+            color: white;
+            font-weight: 600;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .btn-add-cart:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+            color: white;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #E6F4EA, #FDECF3);
+        }
+
+        .timeline { position: relative; padding-left: 3rem; }
+        .timeline::before {
+            content: ''; position: absolute; left: 1rem; top: 0; bottom: 0; width: 2px; background: var(--primary-color);
+        }
+
+        .timeline-item {
+            position: relative; margin-bottom: 2rem; background: white; padding: 1.5rem; border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        .timeline-item::before {
+            content: ''; position: absolute; left: -2.5rem; top: 1.5rem; width: 1rem; height: 1rem; background: var(--primary-color);
+            border-radius: 50%; border: 3px solid white; box-shadow: 0 0 0 3px var(--primary-color);
+        }
+
+        /* Contact Section */
+        .contact-section { padding: 80px 0; }
+
+        .contact-card {
+            background: white; border-radius: 15px; padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08); text-align: center; transition: transform 0.2s ease;
+        }
+        .contact-card:hover { transform: translateY(-5px); }
+        .contact-icon { font-size: 2.5rem; color: var(--primary-color); margin-bottom: 1rem; }
+
+        /* Cart Modal Enhancements */
+        .modal-header {
+            background: var(--candy-gradient);
+            color: white;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .cart-item {
+            border-bottom: 1px solid #eee;
+            padding: 1rem 0;
+            transition: padding-left 0.15s ease, background 0.15s ease;
+        }
+        .cart-item:hover { background: #F8FAFC; padding-left: 1rem; }
+
+        .quantity-btn {
+            width: 35px; height: 35px; border-radius: 50%; border: none; font-weight: bold; transition: transform 0.1s ease;
+        }
+        .quantity-btn:hover { transform: scale(1.08); }
+
+        /* Testimonials */
+        .testimonial-card {
+            background: white; border-radius: 15px; padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08); text-align: center; height: 100%;
+        }
+        .testimonial-avatar {
+            width: 80px; height: 80px; background: var(--candy-gradient); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white; margin: 0 auto 1rem;
+        }
+
+        /* Footer */
+        footer { background: var(--dark-color); color: white; padding: 3rem 0 1rem; }
+        .footer-brand { font-family: 'Fredoka One', cursive; font-size: 2rem; color: #FFD166; }
+        .footer-link { color: #B8C2CC; text-decoration: none; transition: color 0.15s ease; }
+        .footer-link:hover { color: #E2E8F0; }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.5rem; }
+            .timeline { padding-left: 1.5rem; }
+            .timeline-item::before { left: -1.25rem; }
+        }
+
+        /* Reduced motion preference */
+        @media (prefers-reduced-motion: reduce) {
+            * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px; height: 20px;
+            border: 3px solid rgba(255,255,255,.3); border-radius: 50%; border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg);} }
+
+        /* Success Toast */
+        .success-toast { position: fixed; top: 20px; right: 20px; z-index: 9999; animation: slideInRight 0.5s ease-out; }
+        @keyframes slideInRight { from { transform: translateX(100%);} to { transform: translateX(0);} }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <i class="bi bi-heart-fill"></i> Kiwi’s Candy by the Pound
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">
+                            <i class="bi bi-house-door"></i> Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">
+                            <i class="bi bi-info-circle"></i> About
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#products">
+                            <i class="bi bi-grid"></i> Products
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">
+                            <i class="bi bi-envelope"></i> Contact
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-outline-primary ms-2" data-bs-toggle="modal" data-bs-target="#cartModal">
+                            <i class="bi bi-cart"></i> Cart 
+                            <span class="badge bg-primary" id="cartCount">0</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content">
+                    <h1 class="hero-title display-3">
+                        <i class="bi bi-star-fill"></i> Kiwi’s Candy by the Pound
+                    </h1>
+                    <p class="hero-subtitle lead">
+                        Premium artisanal confections crafted with care in Kemptville, Ontario. 
+                        From classic chocolates to playful new creations, we bring sweetness to every celebration — by the pound.
+                    </p>
+                    <div class="d-flex gap-3 flex-wrap">
+                        <a href="#products" class="btn btn-light btn-lg">
+                            <i class="bi bi-grid"></i> Shop Now
+                        </a>
+                        <a href="#about" class="btn btn-outline-light btn-lg">
+                            <i class="bi bi-info-circle"></i> Our Story
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center mt-5 mt-lg-0">
+                    <div class="display-1" style="font-size: 8rem; animation: bounce 2s ease-in-out infinite;">
+                        🍭
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Information Section -->
+    <section class="business-info">
+        <div class="container">
+            <h2 class="section-title">Why Choose Kiwi’s?</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="info-card text-center">
+                        <div class="info-icon">
+                            <i class="bi bi-award"></i>
+                        </div>
+                        <h3>Premium Quality</h3>
+                        <p>We use only fine ingredients from trusted Canadian and international suppliers. Every batch is crafted to our exacting standards.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="info-card text-center">
+                        <div class="info-icon">
+                            <i class="bi bi-truck"></i>
+                        </div>
+                        <h3>Local Delivery</h3>
+                        <p>Same-day local delivery within a 25&nbsp;km radius of Kemptville. Express shipping Canada-wide with temperature-controlled packing.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="info-card text-center">
+                        <div class="info-icon">
+                            <i class="bi bi-headset"></i>
+                        </div>
+                        <h3>Neighbourly Support</h3>
+                        <p>Our friendly team is available 7 days a week to make sure your order is perfect — every single time.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2 class="section-title text-start">Our Sweet Journey</h2>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <h4>1995 — A Kemptville Beginning</h4>
+                            <p>Founded by the Kiwi family with classic recipes and a love for community, starting as a small shop in downtown Kemptville.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>2005 — Growing the Dream</h4>
+                            <p>Expanded our space and selection, becoming a local favourite for pick-and-mix candy by the pound.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>2015 — Online & Canada-Wide</h4>
+                            <p>Launched our e-commerce shop so Canadians from coast to coast could enjoy Kiwi’s confections.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>2025 — Sustainable & Local</h4>
+                            <p>Committed to eco-friendly packaging and supporting Ontario suppliers while keeping our handcrafted quality.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row g-4">
+                        <div class="col-12">
+                            <div class="info-card">
+                                <h3><i class="bi bi-people"></i> Our Mission</h3>
+                                <p>To make joyful, memorable confectionery — the kind you share — while supporting our Kemptville community and operating responsibly.</p>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="info-card">
+                                <h3><i class="bi bi-gem"></i> Our Values</h3>
+                                <ul class="list-unstyled">
+                                    <li><i class="bi bi-check-circle text-success"></i> Craftsmanship in every batch</li>
+                                    <li><i class="bi bi-check-circle text-success"></i> Friendly, Canadian customer care</li>
+                                    <li><i class="bi bi-check-circle text-success"></i> Environmental responsibility</li>
+                                    <li><i class="bi bi-check-circle text-success"></i> Community-minded and local first</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products-section">
+        <div class="container">
+            <h2 class="section-title">Our Premium Collection</h2>
+            <div class="row mb-4">
+                <div class="col-md-6 mx-auto">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="productSearch" placeholder="Search products…">
+                        <button class="btn btn-outline-secondary" type="button">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="row g-4" id="productGrid">
+                <!-- Products dynamically loaded by existing JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-5" style="background: linear-gradient(135deg, #f8f9fa, #e9ecef);">
+        <div class="container">
+            <h2 class="section-title">What Our Customers Say</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-avatar">👩</div>
+                        <h5>Sarah Johnson</h5>
+                        <div class="text-warning mb-2">
+                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                        </div>
+                        <p>“The chocolate truffles are absolutely divine! Perfect for special occasions. Fast delivery and beautiful packaging.”</p>
+                        <small class="text-muted">Verified Purchase — March 2025</small>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-avatar">👨</div>
+                        <h5>Michael Chen</h5>
+                        <div class="text-warning mb-2">
+                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                        </div>
+                        <p>“Best candy shop online! The gummy bears are my kids’ favourite. Great service and fair prices.”</p>
+                        <small class="text-muted">Verified Purchase — February 2025</small>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-avatar">👵</div>
+                        <h5>Eleanor Smith</h5>
+                        <div class="text-warning mb-2">
+                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                        </div>
+                        <p>“Feels like an old-fashioned sweet shop. Quality confections and a nostalgic experience. Highly recommended!”</p>
+                        <small class="text-muted">Verified Purchase — January 2025</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Get in Touch</h2>
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="bi bi-geo-alt"></i>
+                        </div>
+                        <h5>Visit Our Shop</h5>
+                        <p>Downtown Kemptville<br>Kemptville, ON<br>Canada</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="bi bi-telephone"></i>
+                        </div>
+                        <h5>Call Us</h5>
+                        <p>Phone: (613) 555-KIWI<br>Toll-Free: 1-844-KIWI-YUM<br>Mon–Sat: 9&nbsp;AM–8&nbsp;PM</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="bi bi-envelope"></i>
+                        </div>
+                        <h5>Email Us</h5>
+                        <p>orders@kiwiscandy.ca<br>info@kiwiscandy.ca<br>Replies within 24&nbsp;hours</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="bi bi-chat-dots"></i>
+                        </div>
+                        <h5>Live Chat</h5>
+                        <p>Available 24/7<br>Instant support<br>Real-time assistance</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Contact Form (unchanged structure/JS) -->
+            <div class="row mt-5">
+                <div class="col-lg-8 mx-auto">
+                    <div class="card shadow">
+                        <div class="card-body p-4">
+                            <h4 class="card-title text-center mb-4">Send Us a Message</h4>
+                            <form id="contactForm">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="firstName" class="form-label">First Name *</label>
+                                        <input type="text" class="form-control" id="firstName" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="lastName" class="form-label">Last Name *</label>
+                                        <input type="text" class="form-control" id="lastName" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="email" class="form-label">Email Address *</label>
+                                        <input type="email" class="form-control" id="email" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="subject" class="form-label">Subject</label>
+                                        <select class="form-select" id="subject">
+                                            <option value="general">General Enquiry</option>
+                                            <option value="order">Order Support</option>
+                                            <option value="product">Product Question</option>
+                                            <option value="feedback">Feedback</option>
+                                            <option value="wholesale">Wholesale Enquiry</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="message" class="form-label">Message *</label>
+                                        <textarea class="form-control" id="message" rows="4" required></textarea>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="newsletter" value="yes">
+                                            <label class="form-check-label" for="newsletter">
+                                                Subscribe to our newsletter for sweet deals and new product announcements
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 text-center">
+                                        <button type="submit" class="btn btn-primary btn-lg">
+                                            <i class="bi bi-send"></i> Send Message
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="footer-brand mb-3">
+                        <i class="bi bi-heart-fill"></i> Kiwi’s Candy by the Pound
+                    </div>
+                    <p class="text-muted">Premium artisanal confections crafted with love in Kemptville since 1995. Bringing sweetness to your special moments.</p>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="footer-link" aria-label="Facebook"><i class="bi bi-facebook fs-4"></i></a>
+                        <a href="#" class="footer-link" aria-label="Instagram"><i class="bi bi-instagram fs-4"></i></a>
+                        <a href="#" class="footer-link" aria-label="Twitter"><i class="bi bi-twitter fs-4"></i></a>
+                        <a href="#" class="footer-link" aria-label="YouTube"><i class="bi bi-youtube fs-4"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3">
+                    <h6 class="text-white mb-3">Quick Links</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#home" class="footer-link">Home</a></li>
+                        <li><a href="#about" class="footer-link">About</a></li>
+                        <li><a href="#products" class="footer-link">Products</a></li>
+                        <li><a href="#contact" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-3">
+                    <h6 class="text-white mb-3">Categories</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="footer-link">Chocolates</a></li>
+                        <li><a href="#" class="footer-link">Gummies</a></li>
+                        <li><a href="#" class="footer-link">Hard Candies</a></li>
+                        <li><a href="#" class="footer-link">Gift Boxes</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-3">
+                    <h6 class="text-white mb-3">Support</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="footer-link">FAQ</a></li>
+                        <li><a href="#" class="footer-link">Shipping</a></li>
+                        <li><a href="#" class="footer-link">Returns</a></li>
+                        <li><a href="#" class="footer-link">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-3">
+                    <h6 class="text-white mb-3">Newsletter</h6>
+                    <p class="small">Subscribe for sweet deals and new arrivals!</p>
+                    <div class="input-group input-group-sm">
+                        <input type="email" class="form-control" placeholder="Your email" aria-label="Email subscription">
+                        <button class="btn btn-primary" type="button">
+                            <i class="bi bi-send"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="small mb-0">&copy; 2025 Kiwi’s Candy by the Pound. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="small mb-0">
+                        Made with <i class="bi bi-heart-fill text-danger"></i> in Kemptville, Ontario
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Shopping Cart Modal (unchanged structure) -->
+    <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cartModalLabel">
+                        <i class="bi bi-cart"></i> Shopping Cart
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="cartItems">
+                        <div class="text-center py-5">
+                            <i class="bi bi-cart-x display-1 text-muted"></i>
+                            <h5 class="mt-3">Your cart is empty</h5>
+                            <p class="text-muted">Add some sweet treats to get started!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="d-flex justify-content-between w-100 align-items-center">
+                        <div>
+                            <strong>Total: $<span id="cartTotal">0.00</span></strong>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continue Shopping</button>
+                            <button type="button" class="btn btn-primary" id="checkoutBtn" disabled>
+                                <i class="bi bi-credit-card"></i> Checkout
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Toast Template -->
+    <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 9999;">
+        <div id="successToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-success text-white">
+                <i class="bi bi-check-circle me-2"></i>
+                <strong class="me-auto">Success!</strong>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                Item added to cart successfully!
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5.3 JS Bundle -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Products Data (content updated to Canadian English; structure/JS unchanged)
+        const products = [
+            {
+                id: 1,
+                name: "Premium Chocolate Truffles",
+                emoji: "🍫",
+                price: 24.99,
+                description: "Handcrafted Belgian chocolate truffles with fillings like raspberry, caramel, and dark chocolate ganache."
+            },
+            {
+                id: 2,
+                name: "Gummy Bear Paradise",
+                emoji: "🐻",
+                price: 12.99,
+                description: "Assorted fruit-flavoured gummy bears made with quality ingredients and real fruit juice."
+            },
+            {
+                id: 3,
+                name: "Artisan Lollipops",
+                emoji: "🍭",
+                price: 8.99,
+                description: "Hand-pulled lollipops in unique flavours such as lavender honey, rose petal, and champagne."
+            },
+            {
+                id: 4,
+                name: "Classic Rock Candy",
+                emoji: "💎",
+                price: 15.99,
+                description: "Traditional rock candy crystals available in multiple colours and flavours."
+            },
+            {
+                id: 5,
+                name: "Caramel Delights",
+                emoji: "🍯",
+                price: 18.99,
+                description: "Soft, chewy caramels made with real butter and cream — some dipped in premium chocolate."
+            },
+            {
+                id: 6,
+                name: "Sour Patch Medley",
+                emoji: "😋",
+                price: 11.99,
+                description: "A tangy mix of sour candies that will make your taste buds dance with delight."
+            },
+            {
+                id: 7,
+                name: "Mint Chocolate Creams",
+                emoji: "🌿",
+                price: 22.99,
+                description: "Refreshing mint-infused chocolate creams with a smooth, velvety texture."
+            },
+            {
+                id: 8,
+                name: "Candy Cane Collection",
+                emoji: "🎋",
+                price: 9.99,
+                description: "Classic and flavoured candy canes — perfect for holidays or everyday treats."
+            },
+            {
+                id: 9,
+                name: "Fudge Squares",
+                emoji: "⬛",
+                price: 19.99,
+                description: "Rich, creamy fudge squares in chocolate, vanilla, and peanut butter."
+            }
+        ];
+
+        // Shopping Cart (unchanged)
+        let cart = [];
+
+        // DOM Elements (unchanged)
+        const productGrid = document.getElementById('productGrid');
+        const cartCount = document.getElementById('cartCount');
+        const cartItems = document.getElementById('cartItems');
+        const cartTotal = document.getElementById('cartTotal');
+        const checkoutBtn = document.getElementById('checkoutBtn');
+        const productSearch = document.getElementById('productSearch');
+        const contactForm = document.getElementById('contactForm');
+
+        // Initialize the application (unchanged)
+        document.addEventListener('DOMContentLoaded', function() {
+            renderProducts();
+            updateCartDisplay();
+            
+            // Search functionality
+            productSearch.addEventListener('input', handleSearch);
+            
+            // Contact form
+            contactForm.addEventListener('submit', handleContactForm);
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+
+        // Render products (unchanged)
+        function renderProducts(productsToRender = products) {
+            productGrid.innerHTML = '';
+            
+            productsToRender.forEach(product => {
+                const productCard = `
+                    <div class="col-lg-4 col-md-6">
+                        <div class="product-card">
+                            <div class="product-emoji">
+                                ${product.emoji}
+                            </div>
+                            <div class="product-body">
+                                <h5 class="card-title">${product.name}</h5>
+                                <p class="card-text">${product.description}</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="product-price">${product.price.toFixed(2)}</span>
+                                    <button class="btn btn-add-cart" onclick="addToCart(${product.id})">
+                                        <i class="bi bi-cart-plus"></i> Add to Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                productGrid.innerHTML += productCard;
+            });
+        }
+
+        // Add to cart function (unchanged)
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({...product, quantity: 1});
+            }
+            
+            updateCartDisplay();
+            showSuccessToast('Item added to cart successfully!');
+        }
+
+        // Remove from cart (unchanged)
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartDisplay();
+        }
+
+        // Update quantity (unchanged)
+        function updateQuantity(productId, change) {
+            const item = cart.find(item => item.id === productId);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    removeFromCart(productId);
+                } else {
+                    updateCartDisplay();
+                }
+            }
+        }
+
+        // Update cart display (unchanged)
+        function updateCartDisplay() {
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            cartCount.textContent = totalItems;
+            cartTotal.textContent = totalPrice.toFixed(2);
+            checkoutBtn.disabled = cart.length === 0;
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = `
+                    <div class="text-center py-5">
+                        <i class="bi bi-cart-x display-1 text-muted"></i>
+                        <h5 class="mt-3">Your cart is empty</h5>
+                        <p class="text-muted">Add some sweet treats to get started!</p>
+                    </div>
+                `;
+            } else {
+                cartItems.innerHTML = cart.map(item => `
+                    <div class="cart-item">
+                        <div class="row align-items-center">
+                            <div class="col-2 text-center">
+                                <span style="font-size: 2rem;">${item.emoji}</span>
+                            </div>
+                            <div class="col-6">
+                                <h6 class="mb-0">${item.name}</h6>
+                                <small class="text-muted">${item.price.toFixed(2)} each</small>
+                            </div>
+                            <div class="col-3">
+                                <div class="d-flex align-items-center justify-content-center gap-2">
+                                    <button class="quantity-btn btn btn-outline-secondary btn-sm" onclick="updateQuantity(${item.id}, -1)">-</button>
+                                    <span class="mx-2">${item.quantity}</span>
+                                    <button class="quantity-btn btn btn-outline-secondary btn-sm" onclick="updateQuantity(${item.id}, 1)">+</button>
+                                </div>
+                            </div>
+                            <div class="col-1">
+                                <button class="btn btn-outline-danger btn-sm" onclick="removeFromCart(${item.id})" title="Remove item">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // Search functionality (unchanged)
+        function handleSearch(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const filteredProducts = products.filter(product => 
+                product.name.toLowerCase().includes(searchTerm) || 
+                product.description.toLowerCase().includes(searchTerm)
+            );
+            renderProducts(filteredProducts);
+        }
+
+        // Contact form handler (unchanged)
+        function handleContactForm(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData.entries());
+            
+            const submitBtn = e.target.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            
+            submitBtn.innerHTML = '<span class="loading"></span> Sending...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                showSuccessToast('Message sent successfully! We\'ll get back to you soon.');
+                e.target.reset();
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }, 2000);
+        }
+
+        // Show success toast (unchanged)
+        function showSuccessToast(message) {
+            const toast = document.getElementById('successToast');
+            const toastBody = toast.querySelector('.toast-body');
+            toastBody.textContent = message;
+            
+            const bsToast = new bootstrap.Toast(toast);
+            bsToast.show();
+        }
+
+        // Checkout function (unchanged demo)
+        checkoutBtn.addEventListener('click', function() {
+            showSuccessToast('Checkout functionality would be implemented here!');
+        });
+
+        // Newsletter subscription (unchanged)
+        document.querySelector('.input-group button').addEventListener('click', function() {
+            const email = this.previousElementSibling.value;
+            if (email) {
+                showSuccessToast('Thanks for subscribing to our newsletter!');
+                this.previousElementSibling.value = '';
+            }
+        });
+
+        // Navbar scroll effect (unchanged)
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow');
+            } else {
+                navbar.classList.remove('shadow');
+            }
+        });
+    </script>
+</body>
+</html>
