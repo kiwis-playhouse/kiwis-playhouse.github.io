@@ -241,9 +241,8 @@
         .cart-item {
             border-bottom: 1px solid #eee;
             padding: 1rem 0;
-            transition: padding-left 0.15s ease, background 0.15s ease;
         }
-        .cart-item:hover { background: #F8FAFC; padding-left: 1rem; }
+        .cart-item:hover { background: #F8FAFC;}
 
         .quantity-btn {
             width: 35px; height: 35px; border-radius: 50%; border: none; font-weight: bold; transition: transform 0.1s ease;
@@ -925,7 +924,7 @@
                     <div class="cart-item">
                         <div class="row align-items-center">
                             <div class="col-2">
-                                <img src="${item.img}" class="rounded-circle" alt="">
+                                <img src="${item.img}" class="img-fluid" alt="">
                             </div>
                             <div class="col-6">
                                 <h6 class="mb-0">${item.name}</h6>
