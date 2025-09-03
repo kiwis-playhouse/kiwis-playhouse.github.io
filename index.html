@@ -177,13 +177,6 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.12);
         }
 
-        .product-emoji {
-            font-size: 4rem;
-            text-align: center;
-            padding: 2rem;
-            background: linear-gradient(135deg, #F4F8F6, #EDF5FF);
-        }
-
         .product-body { padding: 1.5rem; }
 
         .product-price {
@@ -797,14 +790,14 @@
             {
                 id: 8,
                 name: "Candy Cane Collection",
-                emoji: "🎋",
+                img: "8-unsplash.jpg",
                 price: 9.99,
                 description: "Classic and flavoured candy canes — perfect for holidays or everyday treats."
             },
             {
                 id: 9,
                 name: "Fudge Squares",
-                emoji: "⬛",
+                img: "9-unsplash.jpg",
                 price: 19.99,
                 description: "Rich, creamy fudge squares in chocolate, vanilla, and peanut butter."
             }
@@ -931,8 +924,8 @@
                 cartItems.innerHTML = cart.map(item => `
                     <div class="cart-item">
                         <div class="row align-items-center">
-                            <div class="col-2 text-center">
-                                <span style="font-size: 2rem;">${item.emoji}</span>
+                            <div class="col-2">
+                                <img scr="${item.img}" alt="">
                             </div>
                             <div class="col-6">
                                 <h6 class="mb-0">${item.name}</h6>
